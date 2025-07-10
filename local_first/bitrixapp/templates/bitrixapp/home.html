@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitrix24 App</title>
+</head>
+<body>
+    <h1>Добро пожаловать, {{ user_name }}!</h1>
+    <div>
+        <a href="{% url 'create_deal' %}">Создание сделки</a>
+    </div>
+    <div>
+        <a href="{% url 'deals' %}">Последние 10 сделок</a>
+    </div>
+</body>
+</html>

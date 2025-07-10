@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список сделок</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>Список последних 10 сделок пользователя {{ user_name }}</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Стадия</th>
+            <th>Валюта</th>
+            <th>Сумма</th>
+            <th>Дата начала</th>
+            <th>Дата закрытия</th>
+            <th>Место встречи</th>
+        </tr>
+        {% for deal in deals %}
+        <tr>
+            <td>{{ deal.ID }}</td>
+            <td>{{ deal.TITLE }}</td>
+            <td>{{ deal.STAGE_ID }}</td>
+            <td>{{ deal.CURRENCY_ID }}</td>
+            <td>{{ deal.OPPORTUNITY }}</td>
+            <td>{{ deal.BEGINDATE|default_if_none:"-" }}</td>
+            <td>{{ deal.CLOSEDATE|default_if_none:"-" }}</td>
+            <td>{{ deal.UF_CRM_1752098496|default_if_none:"-" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8">Нет активных сделок</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div>
+        <a href="{% url 'home' %}">Главная</a> |
+        <a href="{% url 'create_deal' %}">Создать сделку</a>
+    </div>
+</body>
+</html>

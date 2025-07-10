@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Deal</title>
+</head>
+<body>
+    <h1>Создайте новую сделку, {{ user_name }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Создать</button>
+    </form>
+
+    <div>
+        <a href="{% url 'home' %}">На главную</a> |
+        <a href="{% url 'deals' %}">Посмотреть сделки</a>
+    </div>
+</body>
+</html>
